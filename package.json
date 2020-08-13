@@ -1,0 +1,27 @@
+{
+  "name": "node-fse-walk",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "repository": "git@github.com:yuyic/node-fse-walk.git",
+  "author": "Eric Yu <eric.yu@meetsocial.cn>",
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "peerDependencies": {
+    "fs-extra": ">=9.0.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.1",
+    "fs-extra": "^9.0.1"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "scripts": {
+    "build":"tsc",
+    "dev":"tsc --watch",
+    "example": "node example/app"
+  }
+}
