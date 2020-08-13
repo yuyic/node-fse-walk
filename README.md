@@ -1,21 +1,37 @@
-# `node-merge-json`
+# `node-fse-walk`
 
-> merge json file
+> fs-extra readDir walker
 
 ## Usage
 
-```
-const mergeJson = require("node-merge-json");
+```js
+const { lookup } = require("node-fse-walk");
 
-mergeJson({
-    target:__dirname + "a.json",
-    dest: __dirname + "output.json",
-    deepMerge: true,
-    sources: [
-        __dirname + "b.json",
-        __dirname + "c.json",
-        __dirname + "d.json"
-    ]
+lookup({
+    root: __dirname+"/folder",
+    type:"dir" // or 'file'
+})
+.then((p, stats)=>{
+    console.log(p, stats.isDirectory())
+});
+
+```
+
+```js
+const { Walk } = require("node-fse-walk");
+
+const fileList = [];
+const dirList = [];
+
+Walk.go(__dirname)
+.filter(p => /^(?!(__))/.test(p)) // ignore file name start with __
+.on("file", p => fileList.push(p))
+.on("dir", p => dirList.push(p))
+.on('error', function(err){
+    console.error(err.message)
+})
+.on('end', function(){
+    console.log(fileList, dirList);
 })
 
 ```
