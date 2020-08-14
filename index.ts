@@ -3,7 +3,7 @@ import fse from "fs-extra"
 import path from "path"
 
 
-export type Filter = (path:string) => boolean;
+export type Filter = (path:string) => boolean | Promise<boolean>;
 
 export type LookupType = "dir" | "file"
 
@@ -42,7 +42,7 @@ export class Walk extends EventEmitter{
       const stat = await fse.lstat(p)
       const isdir = stat.isDirectory();
 
-      if(this._filter(p)){
+      if(await this._filter(p)){
         this.emit(isdir ? 'dir' : 'file', p, stat);
       }
 
