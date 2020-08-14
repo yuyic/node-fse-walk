@@ -1,6 +1,6 @@
 {
   "name": "node-fse-walk",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "repository": "git@github.com:yuyic/node-fse-walk.git",
@@ -23,6 +23,6 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "example": "node example/app",
-    "prepublish": "yarn build"
+    "prepare": "yarn build"
   }
 }
